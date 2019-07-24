@@ -45,7 +45,7 @@ func _ready():
     variance = OpenSimplexNoise.new()
     variance.seed = randi()
     variance.octaves = 3
-    variance.period = 5
+    variance.period = 2
     variance.persistence = 1
     variance.lacunarity = 1
 
@@ -68,6 +68,10 @@ func _input(event):
 
 func _generate():
     for x in WIDTH:
+        # if randf() < 0.5:
+        #     tilemap.tile_set.tile_set_modulate(tilemap.tile_set.find_tile_by_name("ground_2"), Color.black)
+        # else:
+        #     tilemap.tile_set.tile_set_modulate(tilemap.tile_set.find_tile_by_name("ground_2"), Color.red)
         for y in HEIGHT:
             var height_val = height.get_noise_2d(float(x), float(y))
             var moisture_val = moisture.get_noise_2d(float(x), float(y))
@@ -92,19 +96,19 @@ func _get_tile_index(height, moisture, tech, curse):
         return tiles.find_tile_by_name("4_extended")
 
     if height < 0.3:
-        return tiles.find_tile_by_name("water")
+        return tiles.find_tile_by_name("water_2")
     if height < 0.45:
         if moisture < 0.65:
             if tech < 0.7:
-                return tiles.find_tile_by_name("ground")
+                return tiles.find_tile_by_name("ground_2")
             else:
                 return tiles.find_tile_by_name("buildings")
         else:
-            return tiles.find_tile_by_name("water")
+            return tiles.find_tile_by_name("water_2")
     elif height < 0.6:
         if moisture < 0.65:
             if tech < 0.8:
-                return tiles.find_tile_by_name("ground")
+                return tiles.find_tile_by_name("ground_2")
             else:
                 return tiles.find_tile_by_name("buildings")
         else:
@@ -112,7 +116,7 @@ func _get_tile_index(height, moisture, tech, curse):
     elif height < 0.9:
         if moisture < 0.55:
             if tech < 0.6:
-                return tiles.find_tile_by_name("ground")
+                return tiles.find_tile_by_name("ground_2")
             else:
                 return tiles.find_tile_by_name("buildings")
         else:
@@ -130,11 +134,4 @@ func _get_subtile_position(id, val, plain=false):
     var x = int(rect.size.x / tiles.autotile_get_size(id).x)
     var y = int(rect.size.y / tiles.autotile_get_size(id).y)
     # x is always 0
-    var yy = floor(round(y * val))
-    if yy >= y:
-        print(val)
-        print(yy)
-    elif yy <= 0:
-        print(val)
-        print(yy)
     return Vector2(0, floor(round(y * val)))

@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://tilemap.tres" type="TileSet" id=2]
 
-[sub_resource type="OpenSimplexNoise" id=7]
+[sub_resource type="OpenSimplexNoise" id=1]
 octaves = 1
 period = 20.0
 persistence = 0.75
@@ -13,19 +13,19 @@ lacunarity = 1.0
 flags = 5
 width = 128
 height = 128
-noise = SubResource( 7 )
+noise = SubResource( 1 )
 
-[sub_resource type="OpenSimplexNoise" id=8]
+[sub_resource type="OpenSimplexNoise" id=3]
 octaves = 2
 period = 24.0
 persistence = 0.2
 lacunarity = 4.0
 
-[sub_resource type="NoiseTexture" id=9]
+[sub_resource type="NoiseTexture" id=4]
 flags = 5
 width = 128
 height = 128
-noise = SubResource( 8 )
+noise = SubResource( 3 )
 
 [sub_resource type="OpenSimplexNoise" id=5]
 octaves = 4
@@ -38,22 +38,22 @@ width = 128
 height = 128
 noise = SubResource( 5 )
 
-[sub_resource type="OpenSimplexNoise" id=3]
-period = 5.0
+[sub_resource type="OpenSimplexNoise" id=7]
+period = 2.0
 persistence = 1.0
 lacunarity = 1.0
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=8]
 width = 128
 height = 128
-noise = SubResource( 3 )
+noise = SubResource( 7 )
 
-[sub_resource type="OpenSimplexNoise" id=10]
+[sub_resource type="OpenSimplexNoise" id=9]
 
-[sub_resource type="NoiseTexture" id=11]
+[sub_resource type="NoiseTexture" id=10]
 width = 128
 height = 128
-noise = SubResource( 10 )
+noise = SubResource( 9 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -92,7 +92,7 @@ uppercase = true
 margin_left = 132.0
 margin_right = 260.0
 margin_bottom = 256.0
-texture = SubResource( 9 )
+texture = SubResource( 4 )
 
 [node name="Label" type="Label" parent="HBoxContainer/TextureRect4"]
 anchor_right = 1.0
@@ -127,7 +127,7 @@ uppercase = true
 margin_left = 396.0
 margin_right = 524.0
 margin_bottom = 256.0
-texture = SubResource( 4 )
+texture = SubResource( 8 )
 
 [node name="Label" type="Label" parent="HBoxContainer/TextureRect2"]
 anchor_right = 1.0
@@ -145,7 +145,7 @@ uppercase = true
 margin_left = 528.0
 margin_right = 656.0
 margin_bottom = 256.0
-texture = SubResource( 11 )
+texture = SubResource( 10 )
 
 [node name="Label" type="Label" parent="HBoxContainer/TextureRect5"]
 anchor_right = 1.0

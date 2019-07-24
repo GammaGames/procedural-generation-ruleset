@@ -1,7 +1,10 @@
 [gd_resource type="TileSet" load_steps=3 format=2]
 
-[ext_resource path="res://assets/spritesheets/ground.png" type="Texture" id=1]
-[ext_resource path="res://assets/spritesheets/buildings.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/spritesheets/ground.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/spritesheets/buildings.png" type="Texture" id=2]
+
+
+
 
 [resource]
 0/name = "ground.png 0"
