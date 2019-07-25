@@ -110,7 +110,10 @@ func _get_tile_index(height, moisture, tech, curse):
             else:
                 name = "buildings"
         elif moisture < 0.9:
-            name = "plants"
+            if tech < 0.7:
+                name = "plants"
+            else:
+                name = "buildings"
         else:
             name = "water"
     elif height < 0.6:

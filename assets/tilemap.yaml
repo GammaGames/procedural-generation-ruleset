@@ -1,23 +1,28 @@
 - height*temperature:
+  # Base terrain
     steps:
     - 1@1:dry-mtn,1:snow
     - 1@1:dry-mtn,2:snow
     - 1@1:desert,2:ground,3:forest
     - 2@1:desert,3:ground,2:forest
 - tileset*population:
+  # Adding cities
     steps:
     - plains@1:city,20:-
     - forest@1:city,50:-
     pass:
-    - populated*wealth:
+    - tileset*wealth:
+        # Adding variation to cities
         steps:
-        - 1@1:shittycity,2:normalcity,0.1:richcity
+        - city@1:shittycity,2:normalcity,0.1:richcity
         pass:
           - tileset*fertility:
+            # Adding adding farms to fertile cities
             steps:
             - shittycity@2,1:ruralfarm
             - normalcity@1:-,1:ruralfarm,2:farm
           - curse*height:
+            # Adding curse in rare case it is used
             steps:
             - 1:1:1_extended,20:-
             - 1:1:2_extended,20:-

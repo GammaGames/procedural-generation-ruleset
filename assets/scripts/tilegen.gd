@@ -1,9 +1,6 @@
 extends Object
 
 func _init():
-
-    _pass("foo")
-
     var yaml = load("res://addons/godot-yaml/gdyaml.gdns").new()
 
     var file = File.new()
@@ -17,12 +14,24 @@ func _init():
             pass
 
 
-func _iterate(x_axis, y_axis, x, y, obj):
-    # TODO steps if present
-    # TODO iterate if pass present
+func _iterate(x_axis, y_axis, x, y, target):
+    # TODO if target is string, process step and get tile
+    # If target is array, iterate on each value
     pass
 
 
-func _steps(x_axis, y_axis, x, y, steps):
-    # TODO loop through steps
+func _process_step(step):
+    # TODO process step and 2d array for axis
+    pass
+
+
+func _get_tile(axis):
+    # TODO get y axis
+    # Get x axis
+    # Return x value
+    pass
+
+func _get_axis(value, array):
+    # TODO if tilemap, return array index key name
+    # If array, return array index by key value
     pass
