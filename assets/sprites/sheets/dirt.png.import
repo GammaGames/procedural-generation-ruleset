@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocks.png-b6f89275187fd419b5d4eff217dbc486.stex"
+path="res://.import/dirt.png-cfb43e76d7d6b9327a62a0ad6f47d027.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/spritesheets/rocks.png"
-dest_files=[ "res://.import/rocks.png-b6f89275187fd419b5d4eff217dbc486.stex" ]
+source_file="res://assets/sprites/sheets/dirt.png"
+dest_files=[ "res://.import/dirt.png-cfb43e76d7d6b9327a62a0ad6f47d027.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blocks.png-72194f6192b9f1f998e252a5ff21a588.stex"
+path="res://.import/rock.png-19e4e3ad49c4d9f7dd25c7d1ec69673d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/spritesheets/blocks.png"
-dest_files=[ "res://.import/blocks.png-72194f6192b9f1f998e252a5ff21a588.stex" ]
+source_file="res://assets/sprites/sheets/rock.png"
+dest_files=[ "res://.import/rock.png-19e4e3ad49c4d9f7dd25c7d1ec69673d.stex" ]
 
 [params]
 
