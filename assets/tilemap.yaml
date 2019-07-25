@@ -6,13 +6,20 @@
     - 2@1:desert,3:ground,2:forest
 - tileset*population:
     steps:
-    - plains@1:city,20:
-    - forest@1:city,50:
+    - plains@1:city,20:-
+    - forest@1:city,50:-
     pass:
-      steps:
-      - populated*wealth:
+    - populated*wealth:
+        steps:
         - 1@1:shittycity,2:normalcity,0.1:richcity
-      pass:
-      - tileset*fertility:
-        - shittycity@2,1:ruralfarm
-        - normalcity@1:,1:ruralfarm,2:farm
+        pass:
+          - tileset*fertility:
+            steps:
+            - shittycity@2,1:ruralfarm
+            - normalcity@1:-,1:ruralfarm,2:farm
+          - curse*height:
+            steps:
+            - 1:1:1_extended,20:-
+            - 1:1:2_extended,20:-
+            - 1:1:3_extended,20:-
+            - 2:1:4_extended,20:-
