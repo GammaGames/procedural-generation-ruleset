@@ -1,0 +1,18 @@
+- height*temperature:
+    steps:
+    - 1@1:dry-mtn,1:snow
+    - 1@1:dry-mtn,2:snow
+    - 1@1:desert,2:ground,3:forest
+    - 2@1:desert,3:ground,2:forest
+- tileset*population:
+    steps:
+    - plains@1:city,20:
+    - forest@1:city,50:
+    pass:
+      steps:
+      - populated*wealth:
+        - 1@1:shittycity,2:normalcity,0.1:richcity
+      pass:
+      - tileset*fertility:
+        - shittycity@2,1:ruralfarm
+        - normalcity@1:,1:ruralfarm,2:farm
