@@ -1,7 +1,7 @@
 extends Node2D
 
-export(int) var WIDTH = 500
-export(int) var HEIGHT = 500
+export(int) var WIDTH = 168
+export(int) var HEIGHT = 168
 
 var height
 var moisture
@@ -10,13 +10,7 @@ var variance
 var curse
 
 onready var tilemap = $TileMap
-
-const TILES = {
-    "GROUND": 1,
-    "PLANTS": 3,
-    "ROCKS": 4,
-    "WATER": 5
-}
+onready var tilegen = preload("res://assets/scripts/tilegen.gd").new()
 
 
 func _ready():
@@ -92,37 +86,65 @@ func _get_tile_index(height, moisture, tech, curse):
     tech = inverse_lerp(-1.0, 1.0, tech)
     curse = inverse_lerp(-1.0, 1.0, curse)
 
-    if curse > 0.8:
-        return tiles.find_tile_by_name("4_extended")
+    # if curse > 0.8:
+    #     return tiles.find_tile_by_name("4_extended")
 
-    if height < 0.3:
-        return tiles.find_tile_by_name("water_2")
-    if height < 0.45:
+    var name = "water"
+
+    if height < 0.35:
+        name = "water"
+    elif height < 0.45:
+        if moisture < 0.2:
+            if tech < 0.3:
+                name = "sand"
+            else:
+                name = "dirt"
+        elif moisture < 0.55:
+            if tech < 0.5:
+                name = "dirt"
+            else:
+                name = "buildings"
+        if moisture < 0.65:
+            if tech < 0.6:
+                name = "grass"
+            else:
+                name = "buildings"
+        elif moisture < 0.9:
+            name = "plants"
+        else:
+            name = "water"
+    elif height < 0.6:
+        if moisture < 0.10:
+            name = "sand"
+        elif moisture < 0.45:
+            if tech < 0.8:
+                name = "dirt"
+            else:
+                name = "buildings"
+        elif moisture < 0.65:
+            if tech < 0.7:
+                name = "grass"
+            else:
+                name = "buildings"
+        else:
+            name = "plants"
+    elif height < 0.85:
+        if moisture < 0.35:
+            name = "grass"
         if moisture < 0.65:
             if tech < 0.7:
-                return tiles.find_tile_by_name("ground_2")
+                name = "plants"
             else:
-                return tiles.find_tile_by_name("buildings")
+                name = "buildings"
         else:
-            return tiles.find_tile_by_name("water_2")
-    elif height < 0.6:
-        if moisture < 0.65:
-            if tech < 0.8:
-                return tiles.find_tile_by_name("ground_2")
-            else:
-                return tiles.find_tile_by_name("buildings")
-        else:
-            return tiles.find_tile_by_name("plants")
-    elif height < 0.9:
-        if moisture < 0.55:
-            if tech < 0.6:
-                return tiles.find_tile_by_name("ground_2")
-            else:
-                return tiles.find_tile_by_name("buildings")
-        else:
-            return tiles.find_tile_by_name("plants")
+            name = "rock"
     else:
-        return tiles.find_tile_by_name("rocks")
+        if moisture < 0.6:
+            name = "rock"
+        else:
+            name = "snow"
+
+    return tiles.find_tile_by_name(name)
 
 
 func _get_subtile_position(id, val, plain=false):

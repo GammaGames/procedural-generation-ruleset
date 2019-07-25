@@ -1,27 +1,21 @@
-[gd_resource type="TileSet" load_steps=13 format=2]
+[gd_resource type="TileSet" load_steps=10 format=2]
 
-[ext_resource path="res://assets/sprites/spritesheets/ground.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/spritesheets/buildings.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/spritesheets/ground_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/spritesheets/water_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/spritesheets/flooring.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/spritesheets/plants.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/spritesheets/rocks.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/spritesheets/water.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/spritesheets/1_extended.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/spritesheets/2_extended.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/spritesheets/3_extended.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/spritesheets/4_extended.png" type="Texture" id=12]
-
-
-
+[ext_resource path="res://assets/sprites/sheets/dirt.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/sheets/grass.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/sheets/sand.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/sheets/water.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/sheets/snow.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/sheets/rock.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/sheets/plants.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/sheets/4_extended.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/sheets/buildings.png" type="Texture" id=9]
 
 [resource]
-0/name = "ground"
+0/name = "dirt"
 0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, -32 )
+0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 3584 )
+0/region = Rect2( 0, 0, 64, 640 )
 0/tile_mode = 2
 0/autotile/icon_coordinate = Vector2( 0, 0 )
 0/autotile/tile_size = Vector2( 64, 64 )
@@ -33,11 +27,11 @@
 0/navigation_offset = Vector2( 0, 0 )
 0/shapes = [  ]
 0/z_index = 0
-1/name = "buildings"
+1/name = "grass"
 1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, -32 )
+1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 64, 3328 )
+1/region = Rect2( 0, 0, 64, 832 )
 1/tile_mode = 2
 1/autotile/icon_coordinate = Vector2( 0, 0 )
 1/autotile/tile_size = Vector2( 64, 64 )
@@ -49,11 +43,11 @@
 1/navigation_offset = Vector2( 0, 0 )
 1/shapes = [  ]
 1/z_index = 0
-2/name = "flooring"
-2/texture = ExtResource( 5 )
-2/tex_offset = Vector2( 0, -32 )
+2/name = "sand"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 64, 1536 )
+2/region = Rect2( 0, 0, 64, 256 )
 2/tile_mode = 2
 2/autotile/icon_coordinate = Vector2( 0, 0 )
 2/autotile/tile_size = Vector2( 64, 64 )
@@ -65,11 +59,11 @@
 2/navigation_offset = Vector2( 0, 0 )
 2/shapes = [  ]
 2/z_index = 0
-3/name = "plants"
-3/texture = ExtResource( 6 )
-3/tex_offset = Vector2( 0, -32 )
+3/name = "water"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 64, 5120 )
+3/region = Rect2( 0, 0, 64, 960 )
 3/tile_mode = 2
 3/autotile/icon_coordinate = Vector2( 0, 0 )
 3/autotile/tile_size = Vector2( 64, 64 )
@@ -81,11 +75,11 @@
 3/navigation_offset = Vector2( 0, 0 )
 3/shapes = [  ]
 3/z_index = 0
-4/name = "rocks"
-4/texture = ExtResource( 7 )
-4/tex_offset = Vector2( 0, -32 )
+4/name = "snow"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 0, 64, 4608 )
+4/region = Rect2( 0, 0, 64, 768 )
 4/tile_mode = 2
 4/autotile/icon_coordinate = Vector2( 0, 0 )
 4/autotile/tile_size = Vector2( 64, 64 )
@@ -97,11 +91,11 @@
 4/navigation_offset = Vector2( 0, 0 )
 4/shapes = [  ]
 4/z_index = 0
-5/name = "water"
-5/texture = ExtResource( 8 )
-5/tex_offset = Vector2( 0, -32 )
+5/name = "rock"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 0, 0, 64, 3584 )
+5/region = Rect2( 0, 0, 64, 3072 )
 5/tile_mode = 2
 5/autotile/icon_coordinate = Vector2( 0, 0 )
 5/autotile/tile_size = Vector2( 64, 64 )
@@ -113,11 +107,11 @@
 5/navigation_offset = Vector2( 0, 0 )
 5/shapes = [  ]
 5/z_index = 0
-6/name = "1_extended"
-6/texture = ExtResource( 9 )
-6/tex_offset = Vector2( 0, -32 )
+6/name = "plants"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 64, 6144 )
+6/region = Rect2( 0, 0, 64, 5120 )
 6/tile_mode = 2
 6/autotile/icon_coordinate = Vector2( 0, 0 )
 6/autotile/tile_size = Vector2( 64, 64 )
@@ -129,9 +123,9 @@
 6/navigation_offset = Vector2( 0, 0 )
 6/shapes = [  ]
 6/z_index = 0
-7/name = "2_extended"
-7/texture = ExtResource( 10 )
-7/tex_offset = Vector2( 0, -32 )
+7/name = "4_extended"
+7/texture = ExtResource( 8 )
+7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 64, 6144 )
 7/tile_mode = 2
@@ -145,11 +139,11 @@
 7/navigation_offset = Vector2( 0, 0 )
 7/shapes = [  ]
 7/z_index = 0
-8/name = "3_extended"
-8/texture = ExtResource( 11 )
-8/tex_offset = Vector2( 0, -32 )
+8/name = "buildings"
+8/texture = ExtResource( 9 )
+8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 0, 0, 64, 6144 )
+8/region = Rect2( 0, 0, 64, 3328 )
 8/tile_mode = 2
 8/autotile/icon_coordinate = Vector2( 0, 0 )
 8/autotile/tile_size = Vector2( 64, 64 )
@@ -161,52 +155,4 @@
 8/navigation_offset = Vector2( 0, 0 )
 8/shapes = [  ]
 8/z_index = 0
-9/name = "4_extended"
-9/texture = ExtResource( 12 )
-9/tex_offset = Vector2( 0, -32 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 0, 0, 64, 6144 )
-9/tile_mode = 2
-9/autotile/icon_coordinate = Vector2( 0, 0 )
-9/autotile/tile_size = Vector2( 64, 64 )
-9/autotile/spacing = 0
-9/autotile/occluder_map = [  ]
-9/autotile/navpoly_map = [  ]
-9/autotile/z_index_map = [  ]
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shapes = [  ]
-9/z_index = 0
-10/name = "ground_2"
-10/texture = ExtResource( 3 )
-10/tex_offset = Vector2( 0, -32 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 0, 0, 64, 1728 )
-10/tile_mode = 2
-10/autotile/icon_coordinate = Vector2( 0, 0 )
-10/autotile/tile_size = Vector2( 64, 64 )
-10/autotile/spacing = 0
-10/autotile/occluder_map = [  ]
-10/autotile/navpoly_map = [  ]
-10/autotile/z_index_map = [  ]
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shapes = [  ]
-10/z_index = 0
-11/name = "water_2"
-11/texture = ExtResource( 4 )
-11/tex_offset = Vector2( 0, -32 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 0, 0, 64, 960 )
-11/tile_mode = 2
-11/autotile/icon_coordinate = Vector2( 0, 0 )
-11/autotile/tile_size = Vector2( 64, 64 )
-11/autotile/spacing = 0
-11/autotile/occluder_map = [  ]
-11/autotile/navpoly_map = [  ]
-11/autotile/z_index_map = [  ]
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shapes = [  ]
-11/z_index = 0
 
