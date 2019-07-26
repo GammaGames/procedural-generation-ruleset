@@ -1,0 +1,24 @@
+generators:
+  height:
+    seed:
+    octaves:
+    period:
+    persistence:
+    lacunarity:
+  moisture:
+    seed:
+    octaves:
+    period:
+    persistence:
+    lacunarity:
+aliases:
+  rock: dry-mtn
+  snow: wet-mtn
+steps:
+- height*moisture:
+  # Base terrain
+  - 1@2:rock,1:snow
+  - 1@1:rock4:grass,3:plants
+  - 3@1:sand,3:dirt,4:grass,3:plants
+  - 1@3:sand,2:dirt,2:grass,1:plants,1:=water
+  - 3@1:=water

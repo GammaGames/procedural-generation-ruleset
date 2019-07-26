@@ -1,26 +1,33 @@
+generators:
+  height:
+    seed:
+    octaves:
+    period:
+    persistence:
+    lacunarity:
 aliases:
   rock: dry-mtn
   snow: wet-mtn
 steps:
 - height*curse:
   # Adding curse to overwrite anything
-  - $@35:-,1=:1_extended,1:=2_extended,1:=3_extended,3:=4_extended
+  - $@35:-,1:=1_extended,1:=2_extended,1:=3_extended,3:=4_extended
 - height*moisture:
   # Base terrain
   - 1@2:rock,1:snow
   - 1@1:rock4:grass,3:plants
   - 3@1:sand,3:dirt,4:grass,3:plants
-  - 1@3:sand,2:dirt,2:grass,1:plants,1:water
-  - 3@1:water
-- tileset*tech:
+  - 1@3:sand,2:dirt,2:grass,1:plants,1:=water
+  - 3@1:=water
+- tile*tech:
   # Adding cities
   - sand@10:-,1:buildings
   - grass@3:-,1:buildings
   - dirt,plants@4:-,1:buildings
-  - tileset*wealth:
+  - tile*wealth:
     # Adding wealth to cities
     - city@4:poor_buildings,5:buildings,1:wealthy_buildings
-    - tileset*fertility:
+    - tile*fertility:
       # Adding adding farms to cities and grasslands
       - poor_buildings@2:-,1:farm
       - buildings@1:-,1:rural,2:farm
