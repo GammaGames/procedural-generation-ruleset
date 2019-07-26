@@ -1,30 +1,33 @@
-- height*temperature:
+aliases:
+  rock: dry-mtn
+  snow: wet-mtn
+steps:
+- height*curse:
+  # Adding curse to overwrite anything
+  - $@35:-,1=:1_extended,1:=2_extended,1:=3_extended,3:=4_extended
+- height*moisture:
   # Base terrain
-    steps:
-    - 1@1:dry-mtn,1:snow
-    - 1@1:dry-mtn,2:snow
-    - 1@1:desert,2:ground,3:forest
-    - 2@1:desert,3:ground,2:forest
-- tileset*population:
+  - 1@2:rock,1:snow
+  - 1@1:rock4:grass,3:plants
+  - 3@1:sand,3:dirt,4:grass,3:plants
+  - 1@3:sand,2:dirt,2:grass,1:plants,1:water
+  - 3@1:water
+- tileset*tech:
   # Adding cities
-    steps:
-    - plains@1:city,20:-
-    - forest@1:city,50:-
-    pass:
-    - tileset*wealth:
-        # Adding variation to cities
-        steps:
-        - city@1:shittycity,2:normalcity,0.1:richcity
-        pass:
-          - tileset*fertility:
-            # Adding adding farms to fertile cities
-            steps:
-            - shittycity@2,1:ruralfarm
-            - normalcity@1:-,1:ruralfarm,2:farm
-          - curse*height:
-            # Adding curse in rare case it is used
-            steps:
-            - 1:1:1_extended,20:-
-            - 1:1:2_extended,20:-
-            - 1:1:3_extended,20:-
-            - 2:1:4_extended,20:-
+  - sand@10:-,1:buildings
+  - grass@3:-,1:buildings
+  - dirt,plants@4:-,1:buildings
+  - tileset*wealth:
+    # Adding wealth to cities
+    - city@4:poor_buildings,5:buildings,1:wealthy_buildings
+    - tileset*fertility:
+      # Adding adding farms to cities and grasslands
+      - poor_buildings@2:-,1:farm
+      - buildings@1:-,1:rural,2:farm
+      - grass@10:-,2:rural,1:farm
+
+# TODO Create tilemap aliases
+# TODO Add ":=" operator, returns tile immediately
+# TODO Use comma for multiple assignment in Y value
+# TODO Add selector for all ($?)
+# TODO Add selector for not (^?)
