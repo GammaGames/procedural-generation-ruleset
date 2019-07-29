@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/sprites/4_extended.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/buildings.png" type="Texture" id=9]
 
-
 [resource]
 0/name = "dirt"
 0/texture = ExtResource( 1 )

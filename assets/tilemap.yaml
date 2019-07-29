@@ -38,3 +38,4 @@ steps:
 # TODO Use comma for multiple assignment in Y value
 # TODO Add selector for all ($?)
 # TODO Add selector for not (^?)
+# TODO add option for nesting values (eg 2@moisture*tech: ...)

@@ -10,7 +10,7 @@ var variance
 var curse
 
 onready var tilemap = $TileMap
-onready var tilegen = preload("res://assets/scripts/tilegen.gd").new()
+onready var tilegen = preload("res://assets/scripts/tilegen2.gd").new()
 
 
 func _ready():
