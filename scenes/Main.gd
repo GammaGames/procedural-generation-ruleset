@@ -72,11 +72,18 @@ func _generate():
             var tech_val = tech.get_noise_2d(float(x), float(y))
             var variance_val = variance.get_noise_2d(float(x), float(y))
             var curse_val = curse.get_noise_2d(float(x), float(y))
-            var id =  self._get_tile_index(height_val, moisture_val, tech_val, curse_val)
+            # var id =  self._get_tile_index(height_val, moisture_val, tech_val, curse_val)
+            var id = tilemap.tile_set.find_tile_by_name(_get_tile(x, y))
             var subtile = self._get_subtile_position(id, variance_val)
+
+
 
             tilemap.set_cell(x, y - HEIGHT / 2, id, false, false, false, subtile)
     tilemap.update_bitmask_region()
+
+
+func _get_tile(x, y):
+    return tilegen.get_tile(x, y)
 
 
 func _get_tile_index(height, moisture, tech, curse):
