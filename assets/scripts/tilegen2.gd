@@ -23,7 +23,8 @@ func _init():
         generators[gen].seed = randi()
 
     parsed_steps = _parse_steps(value["steps"])
-    # print(JSON.print(parsed_steps, "  "))
+    for map in parsed_steps:
+        print(JSON.print(map, "    "))
 
 
 func _parse_steps(steps):
@@ -50,7 +51,6 @@ func _parse_steps(steps):
                 result.append(parsed_step)
 
     var current = 0.0
-    result.invert()
     for step in result:
         if step.has("value") and int(step.value) != 0:
             var val = step.value
@@ -75,24 +75,22 @@ func _parse_step(step):
     var result = []
     # Calculate total value
     var total = 0.0
-    var rows = [];
+    var current = 0.0
+
     for option in options:
         var parts = option.split(":")
+        total += float(parts[0])
+
+    for option in options:
+        var parts = option.split(":")
+        current += float(parts[0])
         # Store pre-result to only split once
         var row = {
-            "value": float(parts[0]),
+            "value": current / total,
             "tile": parts[1]
         }
-        total += row.value
         result.append(row)
-    # For each row, calculate its probability
-    var current = 0.0
-    rows.invert()
-    for row in result:
-        var val = row.value
-        current += val
-        row.value = current / total
-    rows.invert()
+
     return {
         "steps": result
     }
@@ -105,46 +103,33 @@ func get_tile(x, y):
         var y_axis = map.y_axis
         var yy = null if y_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[y_axis].get_noise_2d(x, y))
         var xx = null if x_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[x_axis].get_noise_2d(x, y))
-        tile_stack.append(_process_steps(x_axis, xx, y_axis, yy, tile_stack, map.steps))
-        if tile_stack.back().begins_with("="):
-            return tile_stack.back().lstrip("=")
+        var tile = _process_steps(x_axis, xx, y_axis, yy, tile_stack, map.steps)
+        if tile != null:
+            if tile.begins_with("="):
+                return tile.lstrip("=")
+            elif tile != "-":
+                tile_stack.append(tile)
 
-    tile_stack.invert()
-    for tile in tile_stack:
-        if tile == "-":
-            pass
-        else:
-            return tile
+    return tile_stack.back()
 
 
 func _process_steps(x_axis, x, y_axis, y, tile_stack, steps):
     var yy = _get_axis(y_axis, y, tile_stack, steps)
+    if yy:
     # TODO if yy has x_axis and y_axis, then call _process_steps again
     # Else just get xx value
-    var xx = _get_axis(x_axis, x, tile_stack, yy.steps)
-    return xx.tile
+        var xx = _get_axis(x_axis, x, tile_stack, yy.steps)
+        return xx.tile
+    else:
+        return null
 
 
 func _get_axis(key, value, tile_stack, steps):
-    print(key)
     if key == "tile":
         for step in steps:
             if tile_stack.back() == step.value:
                 return step
-        # TODO this doesn't work yet
-        # for key in steps.keys():
-        #     if value == key:
-        #         return steps[key]
     else:
         for step in steps:
             if value <= step.value:
                 return step
-
-    # if typeof(steps) == TYPE_DICTIONARY:
-
-    #     # TODO
-    #     pass
-    # else:
-    #     for row in steps:
-    #         if key < float(row.value):
-    #             return steps[value].value

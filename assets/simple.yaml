@@ -21,13 +21,11 @@ steps:
 - height*moisture:
   # Base terrain
   - 1@2:rock,1:snow
-  - 1@1:rock,2:grass,3:plants
-  - 3@1:sand,3:dirt,4:grass,3:plants
-  - 1@3:sand,2:dirt,2:grass,1:plants,1:=water
-  - 3@1:=water
-  # TODO breaks the generation >:c
-  # - tile*population:
-  #   # Adding cities
-  #   - sand@10:-,1:buildings
-  #   - grass@3:-,1:buildings
-  #   - dirt,plants@4:-,1:buildings
+  - 2@1:sand,2:dirt,3:grass,3:plants
+  - 2@1:sand,3:dirt,2:grass,1:plants,2:water
+  - 3@1:water
+- tile*population:
+  # Adding cities
+  - sand@10:-,1:buildings
+  - grass@2:-,1:buildings
+  - dirt,plants@3:-,1:buildings
