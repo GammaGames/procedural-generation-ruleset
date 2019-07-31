@@ -39,7 +39,7 @@ height = 128
 noise = SubResource( 5 )
 
 [sub_resource type="OpenSimplexNoise" id=7]
-period = 2.0
+period = 3.0
 persistence = 1.0
 lacunarity = 1.0
 

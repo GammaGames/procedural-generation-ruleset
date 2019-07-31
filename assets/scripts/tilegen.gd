@@ -1,166 +1,178 @@
 extends Object
 
+var generators = {}
+var aliases = {}
+var parsed_steps = null
+var parser = preload("res://addons/godot-yaml/gdyaml.gdns").new()
 
-func _init():
-    var yaml = load("res://addons/godot-yaml/gdyaml.gdns").new()
 
+func load_config(path, seeed=null):
     var file = File.new()
-    file.open("res://assets/simple.yaml", File.READ)
+    file.open(path, File.READ)
     var content = file.get_as_text().strip_edges()
     file.close()
 
-    var value = yaml.parse(content)
-    var parsed = _parse_steps(value["steps"])
-    # for p in parsed:
-    #     print(p)
+    var value = parser.parse(content)
 
-    # var tile = _process_steps(0, 1, randf())
-
-
-func _iterate(x_axis, y_axis, x, y, target):
-    for instruction in target.keys():
-        if "*" in instruction:
-            pass
-        else:
-            pass
-    # TODO if target is string, process step and get tile
-    # If target is array, iterate on each value
-    pass
+    randomize()
+    if seeed == null:
+        seeed = randi()
+    var gens = value["generators"]
+    for gen in gens:
+        generators[gen] = OpenSimplexNoise.new()
+        generators[gen].seed = seeed
+        for key in gens[gen]:
+            generators[gen][key] = gens[gen][key]
+    aliases = value["aliases"]
+    parsed_steps = parse_config(value["steps"])
 
 
-func _process_steps(key, steps):
-    for step in steps:
-        pass
-    # TODO if step starts with "=", strip and return without processing more
-    # TODO process step and 2d array for axis
+func parse_config(config):
+    return _parse_steps(config).next_pass
 
 
 func _parse_steps(steps):
-    var map = []
-    var is_dict = typeof(steps[0]) == TYPE_DICTIONARY
+    # Pass in array and parse each step
+    var result = []
+    var next = []
     var total = 0.0
 
     for step in steps:
-        # print(step)
-        # If step is object, get axis and parse steps
-        if is_dict:
-            # TODO process object
-            # print("AXIS")
-            var axis = step.keys()[0].split("*")
-            # print(axis)
-            var parsed = _parse_steps(step.values()[0])
-            map.append({
-                "x_axis": axis[1],
-                "y_axis": axis[0],
-                "steps": parsed
-            })
-        # If step is array, parse step
+        if typeof(step) == TYPE_DICTIONARY:
+            next.append(_parse_object(step))
         else:
-            # TODO process string
-            # print("STEP")
-            var y_axis = step.split("@")
-            var is_map = int(y_axis[0]) == 0
-            print(y_axis[0])
-            print(is_map)
-            if is_map:
-                var keys = y_axis[0].split(",")
-                print(keys)
-                # TODO map keys to values
-                # for key in keys:
-                #     print(key)
-                #     var row = {
-                #         "value": key,
-                #         "value": _parse_step(y_axis[1])
-                #     }
-                #     map.append(row)
+            var parts = step.split("@")
+            var parsed_step = _parse_step(parts[1])
+
+            if int(parts[0]) == 0:
+                for key in parts[0].split(","):
+                    result.append({
+                        "value": key,
+                        "steps": parsed_step.steps
+                    })
             else:
-                var row = {
-                    "value": float(y_axis[0]),
-                    "tile": y_axis[1]
-                }
-                total += row.value
-                print(row)
-                map.append(row)
-                # TODO calculate probability
+                parsed_step.value = float(parts[0])
+                total += parsed_step.value
+                result.append(parsed_step)
 
-    if not is_dict:
+    var current = 0.0
+    for step in result:
+        if step.has("value") and int(step.value) != 0:
+            var val = step.value
+            current += val
+            step.value = current / total
 
-        pass
+    var return_val = {}
+    if len(result):
+        return_val.steps = result
+    if len(next):
+        return_val.next_pass = next
 
-
-
-            # var parsed = _parse_step(step)
-            # print(parsed)
-            # map.append(parsed)
-
-    return map
+    return return_val
 
 
-func _parse_step(step):
-    var options = step.split(",")
-    var result = null
-    var is_dict = int(options[0].split(":")[0]) == 0
-    # print(is_dict)
+func _parse_object(step):
+    var axis = step.keys()[0].split("*")
 
-    if is_dict:
-        result = {}
-        for option in options:
-            var parts = option.split(":")
-            var key = parts[0] if is_dict else int(parts[0])
-            result.append({
-                "value": key,
-                "tile": parts[1]
-            })
-    else:
-        result = []
-        # Calculate total value
-        var total = 0.0
-        var rows = [];
-        for option in options:
-            var parts = option.split(":")
-            # Store pre-result to only split once
-            var row = {
-                "value": float(parts[0]),
-                "tile": parts[1]
-            }
-            total += row.value
-            rows.append(row)
-        # For each row, calculate its probability
-        var current = 0.0
-        for row in rows:
-            current += row.value
-            row.value = current / total
-            result.append(row)
+    var parsed_steps = _parse_steps(step.values()[0])
+    var result = {
+        "x_axis": axis[1],
+        "y_axis": axis[0]
+    }
+    if parsed_steps.has("steps"):
+        result.steps = parsed_steps.steps
+    if parsed_steps.has("next_pass"):
+        result.next_pass = parsed_steps.next_pass
 
     return result
 
 
-func _parse_axis(axis):
-    pass
+func _parse_step(step):
+    var options = step.split(",")
+    var result = []
+    # Calculate total value
+    var total = 0.0
+    var current = 0.0
+
+    for option in options:
+        var parts = option.split(":")
+        total += float(parts[0])
+
+    for option in options:
+        var parts = option.split(":")
+        current += float(parts[0])
+        # Store pre-result to only split once
+        var row = {
+            "value": current / total,
+            "tile": parts[1]
+        }
+        result.append(row)
+
+    return {
+        "steps": result
+    }
 
 
-func _get_tile(x_axis, x, y_axis, y, map):
-    var y_value = _get_axis(y_axis, y, map)
-    return _get_axis(x_axis, y, y_value)
-    # TODO get y axis
-    # Get x axis
-    # Return x value
+func get_tile(x, y):
+    var tile = _process_objects(x, y, [], parsed_steps)
+    if tile != null:
+        if tile.begins_with("="):
+            tile = tile.lstrip("=")
+    return aliases[tile] if aliases.has(tile) else tile
 
-func _get_axis(key, value, steps):
+
+func _process_objects(x, y, tile_stack, objects):
+    for object in objects:
+        var tile = _process_object(x, y, tile_stack, object)
+        if tile != null:
+            if tile.begins_with("="):
+                return tile
+            elif tile != "-":
+                tile_stack.append(tile)
+
+    return tile_stack.back()
+
+
+func _process_object(x, y, tile_stack, object):
+    var x_axis = object.x_axis
+    var y_axis = object.y_axis
+    var yy = null if y_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[y_axis].get_noise_2d(x, y))
+    var xx = null if x_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[x_axis].get_noise_2d(x, y))
+    var tile = _process_steps(x_axis, xx, y_axis, yy, tile_stack, object.steps)
+    if tile != null:
+        if tile.begins_with("="):
+            return tile
+        elif tile != "-":
+            tile_stack.append(tile)
+
+    if object.has("next_pass"):
+        tile = _process_objects(x, y, tile_stack, object.next_pass)
+        if tile != null:
+            if tile.begins_with("="):
+                return tile
+            elif tile != "-":
+                tile_stack.append(tile)
+
+    return tile_stack.back()
+
+
+func _process_steps(x_axis, x, y_axis, y, tile_stack, object):
+    var yy = _get_axis(y_axis, y, tile_stack, object)
+    if yy:
+    # TODO if yy has x_axis and y_axis, then call _process_steps again
+    # Else just get xx value
+        var xx = _get_axis(x_axis, x, tile_stack, yy.steps)
+        return xx.tile
+    else:
+        return null
+
+
+func _get_axis(key, value, tile_stack, steps):
     if key == "tile":
-        return steps[value]
+        for step in steps:
+            if tile_stack.back() == step.value:
+                return step
     else:
-        for key in steps.keys():
-            if value < float(key):
-                return steps[key]
-
-
-    if typeof(steps) == TYPE_DICTIONARY:
-        pass
-    else:
-        for row in steps:
-            if key < float(row.value):
-                return steps[value].value
-
-    # TODO if tilemap, return array index key name
-    # If array, return array index by key value
+        for step in steps:
+            if value <= step.value:
+                return step
