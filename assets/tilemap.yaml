@@ -30,7 +30,7 @@ steps:
   - 1@2:rock,1:snow
   - 1@2:grass,3:plants
   - 2@1:sand,2:dirt,2:grass,3:plants
-  - 1@2:sand,1:dirt,1:grass,2:plants,2:=water
+  - 1@2:sand,1:dirt,1:grass,1:plants,2:=water
   - 3@1:=water
   - tile*population:
     # Adding cities
