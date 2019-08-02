@@ -34,7 +34,6 @@ steps:
   - 3@1:=water
   - tile*population:
     # Adding cities
-    - water@1:buildings
     - sand@9:-,1:buildings
     - grass@2:-,1:buildings
     - dirt,plants@3:-,1:buildings
