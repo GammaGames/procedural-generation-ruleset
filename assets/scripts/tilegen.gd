@@ -31,6 +31,10 @@ func parse_config(config):
     return _parse_steps(config).next_pass
 
 
+func print_config():
+    print(JSON.print(parsed_steps, "  "))
+
+
 func _parse_steps(steps):
     # Pass in array and parse each step
     var result = []
@@ -39,7 +43,23 @@ func _parse_steps(steps):
 
     for step in steps:
         if typeof(step) == TYPE_DICTIONARY:
-            next.append(_parse_object(step))
+            if "@" in step.keys()[0]:
+                var parts = step.keys()[0].split("@")
+                var stp = {
+                    parts[1]: step.values()[0]
+                }
+                print(stp)
+                var parsed_step = _parse_object(stp)
+
+                if int(parts[0]) == 0:
+                    parsed_step.value = parts[0]
+                else:
+                    parsed_step.value = float(parts[0])
+                    total += parsed_step.value
+                result.append(parsed_step)
+
+            else:
+                next.append(_parse_object(step))
         else:
             var parts = step.split("@")
             var parsed_step = _parse_step(parts[1])
@@ -76,8 +96,10 @@ func _parse_object(step):
 
     var parsed_steps = _parse_steps(step.values()[0])
     var result = {
-        "x_axis": axis[1],
-        "y_axis": axis[0]
+        "axis": {
+            "x": axis[1],
+            "y": axis[0]
+        }
     }
     if parsed_steps.has("steps"):
         result.steps = parsed_steps.steps
@@ -115,9 +137,8 @@ func _parse_step(step):
 
 func get_tile(x, y):
     var tile = _process_objects(x, y, [], parsed_steps)
-    if tile != null:
-        if tile.begins_with("="):
-            tile = tile.lstrip("=")
+    if tile != null and tile.begins_with("="):
+        tile = tile.lstrip("=")
     return aliases[tile] if aliases.has(tile) else tile
 
 
@@ -134,10 +155,10 @@ func _process_objects(x, y, tile_stack, objects):
 
 
 func _process_object(x, y, tile_stack, object):
-    var x_axis = object.x_axis
-    var y_axis = object.y_axis
-    var yy = null if y_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[y_axis].get_noise_2d(x, y))
-    var xx = null if x_axis == "tile" else inverse_lerp(-1.0, 1.0, generators[x_axis].get_noise_2d(x, y))
+    var x_axis = object.axis.x
+    var y_axis = object.axis.y
+    var yy = inverse_lerp(-1.0, 1.0, generators[y_axis].get_noise_2d(x, y)) if y_axis != "tile" else y
+    var xx = inverse_lerp(-1.0, 1.0, generators[x_axis].get_noise_2d(x, y)) if x_axis != "tile" else x
     var tile = _process_steps(x_axis, xx, y_axis, yy, tile_stack, object.steps)
     if tile != null:
         if tile.begins_with("="):
@@ -161,8 +182,12 @@ func _process_steps(x_axis, x, y_axis, y, tile_stack, object):
     if yy:
     # TODO if yy has x_axis and y_axis, then call _process_steps again
     # Else just get xx value
-        var xx = _get_axis(x_axis, x, tile_stack, yy.steps)
-        return xx.tile
+        if yy.has("axis"):
+            # TODO doesn't work? Won't correctly return tile >:c
+            return _process_object(x, y, tile_stack, yy)
+        else:
+            var xx = _get_axis(x_axis, x, tile_stack, yy.steps)
+            return xx.tile
     else:
         return null
 
