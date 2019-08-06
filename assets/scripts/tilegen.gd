@@ -1,4 +1,4 @@
-extends Object
+extends Resource
 
 var generators = {}
 var aliases = {}

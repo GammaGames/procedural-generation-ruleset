@@ -21,6 +21,7 @@ generators:
     lacunarity: 2
 aliases:
   curse: 4_extended
+  🌲️: plants
 steps:
 - height*curse:
   # Force curse

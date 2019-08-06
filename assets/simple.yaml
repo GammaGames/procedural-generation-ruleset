@@ -21,11 +21,12 @@ generators:
     lacunarity: 2
 aliases:
   curse: 4_extended
+  🌲️: plants
 steps:
 - height*curse:
   - 1@3:-,1:=curse
 - height*moisture:
-  - 1@1:dirt,1:grass,2:plants,2:rock
-  - 3@1:sand,1:dirt,1:grass,1:plants,2:water
+  - 1@1:dirt,1:grass,2:🌲️,2:rock
+  - 3@1:sand,1:dirt,1:grass,1:🌲️,2:water
   - 1@moisture*population:
     - 1@1:water,1:buildings
