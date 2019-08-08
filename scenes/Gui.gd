@@ -29,7 +29,15 @@ func _value_changed(value):
 
 
 func load_config():
-    var sed = int(seeed.text) if seeed.text != "" else null
+    var sed = seeed.text
+    if sed != "":
+        if int(sed) != 0:
+            sed = int(sed)
+        else:
+            sed = sed.hash()
+    else:
+        sed = null
+
     if tilegen.parse_config(textbox.text, sed):
         error_label.visible = false
         set_textures()
