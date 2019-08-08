@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Gui.gd" type="Script" id=1]
+[ext_resource path="res://scenes/TextEdit.gd" type="Script" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+width = 128
+height = 128
+noise = SubResource( 1 )
+
+[node name="Gui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Yaml" type="MarginContainer" parent="."]
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="Stack" type="VBoxContainer" parent="Yaml"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 297.0
+margin_bottom = 590.0
+
+[node name="Seed" type="LineEdit" parent="Yaml/Stack"]
+margin_right = 277.0
+margin_bottom = 24.0
+placeholder_text = "Seed"
+
+[node name="Config" type="TextEdit" parent="Yaml/Stack"]
+margin_top = 28.0
+margin_right = 277.0
+margin_bottom = 546.0
+size_flags_vertical = 3
+caret_blink = true
+script = ExtResource( 2 )
+
+[node name="Box" type="HBoxContainer" parent="Yaml/Stack"]
+margin_top = 550.0
+margin_right = 277.0
+margin_bottom = 570.0
+alignment = 2
+
+[node name="Error" type="Label" parent="Yaml/Stack/Box"]
+visible = false
+margin_left = 87.0
+margin_top = 3.0
+margin_right = 284.0
+margin_bottom = 17.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "error parsing yaml config"
+uppercase = true
+
+[node name="Button" type="Button" parent="Yaml/Stack/Box"]
+margin_left = 235.0
+margin_right = 277.0
+margin_bottom = 20.0
+size_flags_horizontal = 8
+text = "Load"
+
+[node name="Noise" type="ScrollContainer" parent="."]
+editor/display_folded = true
+anchor_right = 0.7
+margin_left = 20.0
+margin_top = 20.0
+margin_bottom = 178.0
+scroll_vertical_enabled = false
+
+[node name="Stack" type="HBoxContainer" parent="Noise"]
+
+[node name="Box" type="VBoxContainer" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 148.0
+margin_bottom = 166.0
+
+[node name="Texture" type="TextureRect" parent="Box"]
+margin_right = 128.0
+margin_bottom = 128.0
+size_flags_horizontal = 12
+size_flags_vertical = 12
+texture = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Box"]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 146.0
+text = "Test"
+align = 1
+
+[node name="Zoom" type="MarginContainer" parent="."]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 41.0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 100
+
+[node name="Stack" type="HBoxContainer" parent="Zoom"]
+margin_left = 20.0
+margin_right = 193.0
+margin_bottom = 16.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Zoom/Stack"]
+margin_right = 41.0
+margin_bottom = 16.0
+size_flags_vertical = 5
+text = "Zoom:"
+valign = 1
+
+[node name="Slider" type="HSlider" parent="Zoom/Stack"]
+margin_left = 45.0
+margin_right = 173.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 128, 0 )
+min_value = 0.2
+max_value = 1.0
+step = 0.0
+value = 0.4
+

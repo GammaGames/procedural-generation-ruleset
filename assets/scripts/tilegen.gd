@@ -7,32 +7,38 @@ var parser = preload("res://addons/godot-yaml/gdyaml.gdns").new()
 
 
 # Load config file with file path. Seed is optional.
-func load_config(path, seeed=null):
+func load_config(path):
     var file = File.new()
     file.open(path, File.READ)
     var content = file.get_as_text().strip_edges()
     file.close()
 
-    var value = parser.parse(content)
-    # If no seed passed in, randomize it
-    if seeed == null:
-        randomize()
-        seeed = randi()
-    # Create the generators
-    var gens = value["generators"]
-    for gen in gens:
-        generators[gen] = OpenSimplexNoise.new()
-        generators[gen].seed = seeed
-        for key in gens[gen]:
-            generators[gen][key] = gens[gen][key]
-    aliases = value["aliases"]
-    # Store the parsed steps
-    parsed_steps = parse_config(value["steps"])
+    parse_config(content)
 
 
 # Parse config object
-func parse_config(config):
-    return _parse_steps(config).next_pass
+func parse_config(config, seeed=null):
+    var value = parser.parse(config)
+    # Null if yaml incorrect
+    if value != null:
+        # If no seed passed in, randomize it
+        if seeed == null:
+            randomize()
+            seeed = randi()
+        # Create the generators
+        var gens = value["generators"]
+        for gen in gens:
+            generators[gen] = OpenSimplexNoise.new()
+            generators[gen].seed = seeed
+            for key in gens[gen]:
+                generators[gen][key] = gens[gen][key]
+            seeed += 1
+        aliases = value["aliases"]
+        # Store the parsed steps
+        parsed_steps = _parse_steps(value["steps"]).next_pass
+
+    # Return if parsing was successful or not
+    return value != null
 
 
 # Print parsed config
