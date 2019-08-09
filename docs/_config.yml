@@ -12,6 +12,8 @@ links:
     url:          https://github.com/GammaGames/mushy-terrain
     external:     true
 
+latest_tag: "1.0"
+
 # ------------ CONFIGURABLE END ------------
 
 defaults:
