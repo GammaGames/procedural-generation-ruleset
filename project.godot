@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="mushy"
 run/main_scene="res://scenes/Main.tscn"
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [input]
