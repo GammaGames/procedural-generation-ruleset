@@ -1,24 +1,19 @@
 ---
 title: Download
-previous: 
-    url: /
-next: 
-    url: /parser
 ---
 
-* The project can have only one scene
-* The one scene can consist of at most 10 nodes
-  * You can duplicate nodes using code at runtime
-  * You cannot create new nodes using code at runtime
-* The one scene can have at most 10 scripts
-  * Extended scripts count as a single script with one more for each extension
-  * Autoload scripts count as a single node
-  * Scripts do not have to be attached to nodes
-  * Shaders do not count against scripts
-* Each node may have a script, but each script can have no more than 100 lines
-  * This includes comments and whitespace
-  * Length is to encourage documentation
-* The total project size can be no larger than 1MB in size
-  * This allows users to include textures, sounds, 3D models, etc
+<img class="w-90" src="{{ site.url }}/assets/img/demo.png">
 
-View [changelog](https://github.com/GammaGames/godot-10pow/commits/master/docs/rules.md).
+While you can run the project from source using the [Godot Engine](https://godotengine.org/), I have built runnable demos available below.
+
+<div class="mw7 center tc pt3 pb4 silver">
+    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://github.com/GammaGames">
+        <i class="fab fa-windows"></i>
+    </a>
+    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
+        <i class="fab fa-apple"></i>
+    </a>
+    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
+        <i class="fab fa-linux"></i>
+    </a>
+</div>

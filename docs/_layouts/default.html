@@ -7,11 +7,6 @@
     {% include head.html %}
   </head>
   <body class="lh-copy dark-gray pa0 f6 sans-serif bg-img" style="background-image: url('{{ site.url }}/assets/img/bg.png')">
-    <header class="tc mt4">
-      <a href="{{ site.url }}">
-        <img src="{{ site.url }}/assets/img/logo.png" alt="Home" height="64">
-      </a>
-    </header>
     <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
       <nav class="bb b--light-gray pv4 tc" aria-label="Main">
         {% for link in site.links %}
@@ -21,7 +16,6 @@
             </a>
         {% endfor %}
       </nav>
-
       <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
         {% if page.title %}
           <div class="mb4">
@@ -40,11 +34,10 @@
           {{ content }}
         </div>
       </main>
-      {% if page.is_post %}{% include pagination.html %}{% endif %}
+      <div class="mw7 center tc pt3 pb4 silver">
+        <a class="link blue hover-mid-gray mh2 pv1" href="https://github.com/GammaGames"><i class="fab fa-github"></i></a>
+        <a class="link blue hover-mid-gray mh2 pv1" href="https://twitter.com/GammaGames"><i class="fab fa-twitter"></i></a>
+      </div>
     </div>
   </body>
-  <footer class="mw7 center tc pt3 pb4 silver">
-    <a class="link blue hover-mid-gray mh2 pv1" href="https://github.com/GammaGames"><i class="fab fa-github"></i></a>
-    <a class="link blue hover-mid-gray mh2 pv1" href="https://twitter.com/GammaGames"><i class="fab fa-twitter"></i></a>
-  </footer>
 </html>
