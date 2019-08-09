@@ -20,4 +20,4 @@ steps:
     - dirt,plants@3:-,1:buildings
 ```
 
- A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/mushy-terrain-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/mushy-terrain/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/download).
+ A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/mushy-terrain-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/mushy-terrain/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/mushy-terrain/download).
