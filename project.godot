@@ -18,6 +18,7 @@ _global_script_class_icons={
 config/name="mushy"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [input]
@@ -35,4 +36,3 @@ limits/debugger_stdout/max_chars_per_second=1048576
 [rendering]
 
 quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
-environment/default_environment="res://default_env.tres"
