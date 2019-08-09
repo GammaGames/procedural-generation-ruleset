@@ -1,0 +1,21 @@
+# ----------- CONFIGURABLE START -----------
+title:            "Mushy Terrain Generator"
+description:      "A Terrain Config Parser and Processor"
+url:              https://gammagames.github.io/mushy-terrain/
+
+links:
+  - name:         About
+    url:          /
+  - name:         Download
+    url:          /download
+  - name:         Parser
+    url:          /parser
+  - name:         GitHub
+    url:          https://github.com/GammaGames/mushy-terrain
+    external:     true
+
+# ------------ CONFIGURABLE END ------------
+
+defaults:
+  - values:
+      layout: "default"

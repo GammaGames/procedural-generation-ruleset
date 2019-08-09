@@ -1,0 +1,41 @@
+.bg-super-white { background: #f9f9f9; }
+.top-50 { top: 50% }
+
+/* Markdown styles */
+.markdown-body a {
+  text-decoration: none;
+  color: #357edd;
+}
+a.highlight, a:not(.no-underline):hover {
+    box-shadow: 0 1px 0 #80808080;
+}
+.markdown-body .highlighter-rouge {
+  padding: .25rem .5rem;
+}
+.markdown-body pre {
+  margin: 0;
+  overflow: auto;
+}
+.markdown-body > .highlighter-rouge,
+.markdown-body > blockquote {
+  padding: .5rem 4rem;
+  margin: 2em -4rem;
+}
+.markdown-body > hr {
+  margin: 2em -4rem;
+  border: 0;
+  border-bottom: 1px dotted #CCC;
+}
+.markdown-body blockquote {
+  background: #f9f9f9;
+  border-left: .2rem solid #ccc;
+  padding-left: 3.8rem;
+}
+.markdown-body img {
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+    border-radius: .25rem;
+    box-shadow: 0 0 8px 2px rgba(0,0,0,.2);
+}
+/* end Markdown styles */
