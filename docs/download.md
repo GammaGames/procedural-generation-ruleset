@@ -10,10 +10,10 @@ While you can run the project from source using the [Godot Engine](https://godot
     <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://github.com/GammaGames">
         <i class="fab fa-windows"></i>
     </a>
-    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
-        <i class="fab fa-apple"></i>
-    </a>
-    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
+    <a class="link near-black hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
         <i class="fab fa-linux"></i>
+    </a>
+    <a class="link silver hover-mid-gray f-headline lh-solid ph4 no-underline" href="https://twitter.com/GammaGames">
+        <i class="fab fa-apple"></i>
     </a>
 </div>

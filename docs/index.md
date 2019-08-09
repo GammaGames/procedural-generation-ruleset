@@ -4,7 +4,7 @@ next:
     url: /rules
 ---
 
-The mushy terrain generator's goal is to make an easy to write format for multi-dimensional and multi-pass terrain generation. The format is easy to write and modify and flexible in use. The background image was generated with the following config:
+The goal of this project is to make an easy to write format for multi-dimensional and multi-pass procedural terrain generation. The format is easy to write and modify and flexible to use in use cases other than terrain generation. The background image was generated with the following config:
 
 ```yaml
 steps:
@@ -22,4 +22,4 @@ steps:
     - dirt,plants@3:-,1:buildings
 ```
 
-You can view the source code on [GitHub](https://github.com/GammaGames/mushy-terrain/blob/master/assets/scripts/tilegen.gd) and you can download a playable demo for Windows, Linux, or macOS [here](/download).
+ A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/mushy-terrain-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/mushy-terrain/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/download).

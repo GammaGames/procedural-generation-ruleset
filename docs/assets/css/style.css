@@ -2,10 +2,10 @@
 .top-50 { top: 50% }
 
 /* Markdown styles */
-.markdown-body a {
+/* .markdown-body a {
   text-decoration: none;
   color: #357edd;
-}
+} */
 a.highlight, a:not(.no-underline):hover {
     box-shadow: 0 1px 0 #80808080;
 }
