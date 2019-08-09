@@ -1,7 +1,5 @@
 ---
 title: Mushy Terrain Generator
-next: 
-    url: /rules
 ---
 
 The goal of this project is to make an easy to write format for multi-dimensional and multi-pass procedural terrain generation. The format is easy to write and modify and flexible to use in use cases other than terrain generation. The background image was generated with the following config:

@@ -26,10 +26,6 @@ func _resized():
 
 
 func _input(event):
-    # if event is InputEventMouseMotion:
-    #     var pos = get_viewport().get_mouse_position()
-    #     # camera.transform.x =
-
     if Input.is_action_just_pressed("ui_cancel"):
         get_tree().quit()
     elif Input.is_action_just_pressed("ui_restart"):
