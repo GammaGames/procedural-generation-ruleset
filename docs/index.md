@@ -1,8 +1,8 @@
 ---
-title: Mushy Terrain Generator
+title: Procedural Generation Ruleset
 ---
 
-The goal of this project is to make an easy to write format for multi-dimensional and multi-pass procedural terrain generation. The format is easy to write and modify and flexible to use in use cases other than terrain generation. The background image was generated with the following config:
+The goal of PGR is to make an easy to write format for multi-dimensional and multi-pass procedural terrain generation. The format is easy to write and modify and flexible to use in use cases other than terrain generation. The background image was generated with the following config:
 
 ```yaml
 steps:
@@ -20,4 +20,4 @@ steps:
     - dirt,plants@3:-,1:buildings
 ```
 
- A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/mushy-terrain-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/mushy-terrain/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/mushy-terrain/download).
+ A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/procedural-generation-ruleset-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/procedural-generation-ruleset/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/procedural-generation-ruleset/download).
