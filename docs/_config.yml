@@ -1,7 +1,7 @@
 # ----------- CONFIGURABLE START -----------
 title:            "Procedural Generation Ruleset"
 description:      "An Easy Terrain Config Parser and Processor"
-url:              https://gammagames.github.io/procedural-generation-ruleset/
+url:              https://gammagames.github.io/procedural-generation-ruleset
 
 links:
   - name:         Home
@@ -11,9 +11,6 @@ links:
   - name:         GitHub
     url:          https://github.com/gammagames/procedural-generation-ruleset/
     external:     true
-
-# latest_tag: "1.0"
-# fetch_releases: false
 
 # ------------ CONFIGURABLE END ------------
 

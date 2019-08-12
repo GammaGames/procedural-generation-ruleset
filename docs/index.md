@@ -20,4 +20,4 @@ steps:
     - dirt,plants@3:-,1:buildings
 ```
 
- A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/procedural-generation-ruleset-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/procedural-generation-ruleset/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](/procedural-generation-ruleset/download).
+ A full writeup on the format can be found on [Medium](https://medium.com/@gammagames/procedural-generation-ruleset-478a7aeb4c12), the source code is available on [GitHub](https://github.com/GammaGames/procedural-generation-ruleset/blob/master/assets/scripts/tilegen.gd), and you can download a playable demo for Windows, Linux, or macOS [here](download).
