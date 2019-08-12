@@ -20,6 +20,21 @@ generators:
     persistence: 0.5
     lacunarity: 2
 aliases:
+  # Available tiles:
+  # 1_extended
+  # 2_extended
+  # 3_extended
+  # blocks
+  # buildings
+  # dirt
+  # flooring
+  # grass
+  # objects
+  # plants
+  # rock
+  # sand
+  # snow
+  # water
   curse: 4_extended
 steps:
 - height*curse:

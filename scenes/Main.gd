@@ -33,14 +33,14 @@ func _input(event):
 
 
 func _loaded():
-    generate(gui.tilegen)
+    generate(gui.tilegen, gui.variance.pressed)
 
 
 func _zoom(value):
     tilemap.scale = Vector2(value, value)
 
 
-func generate(tilegen):
+func generate(tilegen, use_variance):
     variance.seed = randi()
     for x in WIDTH:
         var xx = x - floor(WIDTH / 2)
@@ -48,7 +48,7 @@ func generate(tilegen):
             var tile = tilegen.get_tile(xx, y)
             var id = tilemap.tile_set.find_tile_by_name(tile)
             var variance_val = variance.get_noise_2d(float(xx), float(y))
-            var subtile = self._get_subtile(id, variance_val)
+            var subtile = self._get_subtile(id, variance_val, null if use_variance else 1)
             tilemap.set_cell(xx, y - HEIGHT / 2, id, false, false, false, subtile)
     tilemap.update_bitmask_region()
 

@@ -1,9 +1,10 @@
 extends Control
 
-onready var seeed = $Yaml/Stack/Seed
+onready var seeed = $Yaml/Stack/Settings/Seed
+onready var variance = $Yaml/Stack/Settings/Variance
 onready var textbox = $Yaml/Stack/Config
 onready var error_label = $Yaml/Stack/Box/Error
-onready var load_button = $Yaml/Stack/Box/Button
+onready var generate_button = $Yaml/Stack/Box/Button
 onready var zoom_slider = $Zoom/Stack/Slider
 onready var texture_stack = $Noise/Stack
 onready var texture_box = $Box
@@ -12,11 +13,9 @@ onready var tilegen = preload("res://assets/scripts/tilegen.gd").new()
 signal loaded
 signal zoom
 
-# TODO add zoom in and out buttons
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    load_button.connect("pressed", self, "_pressed")
+    generate_button.connect("pressed", self, "_pressed")
     zoom_slider.connect("value_changed", self, "_value_changed")
 
 
@@ -30,6 +29,7 @@ func _value_changed(value):
 
 func load_config():
     var sed = seeed.text
+    print(sed)
     if sed != "":
         if int(sed) != 0:
             sed = int(sed)
