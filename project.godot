@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="mushy"
+config/name="Procedural Generation Ruleset"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
