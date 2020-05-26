@@ -20,4 +20,4 @@ steps:
     - dirt,plants@3:-,1:buildings
 ```
 
- A full writeup on the format can be found on [my personal blog](https://gammagames.github.io/procedural-generation-ruleset/) or [Medium](https://medium.com/@gammagames/procedural-generation-ruleset-478a7aeb4c12), I have a little page hosted [here](https://gammagames.github.io/procedural-generation-ruleset/), and you can download a playable demo in the [releases](https://github.com/GammaGames/procedural-generation-ruleset/releases).
+ A full writeup on the format can be found on [my personal blog](https://www.gammagames.net/posts/programming/procgen-ruleset) or [Medium](https://medium.com/@gammagames/procedural-generation-ruleset-478a7aeb4c12), I have a little page hosted [here](https://gammagames.github.io/procedural-generation-ruleset/), and you can download a playable demo in the [releases](https://github.com/GammaGames/procedural-generation-ruleset/releases).
