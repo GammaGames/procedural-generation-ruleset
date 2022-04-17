@@ -6,6 +6,8 @@ url:              https://gammagames.github.io/procedural-generation-ruleset
 links:
   - name:         Home
     url:          /
+  - name:         Play In Browser
+    url:          /play
   - name:         Download
     url:          /download
   - name:         GitHub
