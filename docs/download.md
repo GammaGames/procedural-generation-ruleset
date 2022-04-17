@@ -8,6 +8,9 @@ fetch_releases: true
 While you can run the project from source using the [Godot Engine](https://godotengine.org/), I have built runnable demos (<a id="latest_tag"></a>) available below.
 
 <div class="mw7 center tc pt3 pb4 silver">
+    <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" href="{{ site.url }}/play/">
+        <i class="fab fa-chrome"></i>
+    </a>
     <a class="link blue hover-mid-gray f-headline lh-solid ph4 no-underline" id="win_link">
         <i class="fab fa-windows"></i>
     </a>
