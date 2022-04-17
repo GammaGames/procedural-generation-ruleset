@@ -16,7 +16,3 @@ cell_size = Vector2( 64, 32 )
 format = 1
 
 [node name="Gui" parent="." instance=ExtResource( 3 )]
-margin_left = -24.0
-margin_top = -37.0
-margin_right = -24.0
-margin_bottom = -37.0
