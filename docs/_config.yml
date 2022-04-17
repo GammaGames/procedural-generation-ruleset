@@ -14,6 +14,12 @@ links:
     url:          https://github.com/gammagames/procedural-generation-ruleset/
     external:     true
 
+collections:
+  play:
+    collections_dir: assets/play
+    output: true
+    permalink: /play/:name
+
 # ------------ CONFIGURABLE END ------------
 
 defaults:
