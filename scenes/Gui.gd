@@ -21,6 +21,9 @@ func _ready():
 
 func _pressed():
     load_config()
+    seeed.release_focus()
+    variance.release_focus()
+    textbox.release_focus()
 
 
 func _value_changed(value):
@@ -29,7 +32,6 @@ func _value_changed(value):
 
 func load_config():
     var sed = seeed.text
-    print(sed)
     if sed != "":
         if int(sed) != 0:
             sed = int(sed)

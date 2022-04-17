@@ -21,9 +21,9 @@ generators:
     lacunarity: 2
 aliases:
   # Available tiles:
-  # 1_extended
-  # 2_extended
-  # 3_extended
+  # 1@extended
+  # 2@extended
+  # 3@extended
   # blocks
   # buildings
   # dirt
@@ -35,20 +35,20 @@ aliases:
   # sand
   # snow
   # water
-  curse: 4_extended
+  curse: 4@extended
 steps:
 - height*curse:
   # Force curse
-  - 1@25:-,1:=curse
+  - '1@25:-,1:=curse'
 - height*moisture:
   # Base terrain
-  - 1@2:rock,1:snow
-  - 1@2:grass,3:plants
-  - 2@1:sand,2:dirt,2:grass,3:plants
-  - 1@2:sand,1:dirt,1:grass,1:plants,2:=water
-  - 3@1:=water
+  - '1@2:rock,1:snow'
+  - '1@2:grass,3:plants'
+  - '2@1:sand,2:dirt,2:grass,3:plants'
+  - '1@2:sand,1:dirt,1:grass,1:plants,2:=water'
+  - '3@1:=water'
   - tile*population:
     # Adding cities
-    - sand@9:-,1:buildings
-    - grass@2:-,1:buildings
-    - dirt,plants@3:-,1:buildings
+    - 'sand@9:-,1:buildings'
+    - 'grass@2:-,1:buildings'
+    - 'dirt,plants@3:-,1:buildings'

@@ -25,11 +25,13 @@ func _resized():
     tilemap.position = get_viewport().size / 2
 
 
-func _input(event):
+func _unhandled_input(event):
     if Input.is_action_just_pressed("ui_cancel"):
         get_tree().quit()
     elif Input.is_action_just_pressed("ui_restart"):
         gui.load_config()
+    elif Input.is_action_pressed("ui_accept"):
+        gui.visible = !gui.visible
 
 
 func _loaded():

@@ -1,9 +1,13 @@
 extends Resource
 
+var seeed = null
 var generators = {}
 var aliases = {}
 var parsed_steps = null
 var parser = preload("res://addons/godot-yaml/gdyaml.gdns").new()
+
+
+signal seed_changed
 
 
 # Load config file with file path. Seed is optional.
@@ -18,21 +22,23 @@ func load_config(path):
 
 # Parse config object
 func parse_config(config, seeed=null):
-    var value = parser.parse(config)
+    var value = parser.parse(config).result
+    self.seeed = seeed
     # Null if yaml incorrect
     if value != null:
         # If no seed passed in, randomize it
-        if seeed == null:
+        if self.seeed == null:
             randomize()
-            seeed = randi()
+            self.seeed = randi()
+            print("Seed: ", self.seeed)
         # Create the generators
         var gens = value["generators"]
         for gen in gens:
             generators[gen] = OpenSimplexNoise.new()
-            generators[gen].seed = seeed
+            generators[gen].seed = self.seeed
             for key in gens[gen]:
                 generators[gen][key] = gens[gen][key]
-            seeed += 1
+            self.seeed += 1
         aliases = value["aliases"]
         # Store the parsed steps
         parsed_steps = _parse_steps(value["steps"]).next_pass
@@ -172,6 +178,7 @@ func _parse_step(step):
 func _process_objects(x, y, tile_stack, objects):
     for object in objects:
         # Process the object and check if tile is good
+        print(tile_stack)
         var tile = _process_object(x, y, tile_stack, object)
         if tile != null:
             if tile.begins_with("="):
@@ -211,6 +218,7 @@ func _process_object(x, y, tile_stack, object):
                 tile_stack.append(tile)
 
     # Return the last tile in the stack
+    print(tile_stack)
     return tile_stack.back()
 
 

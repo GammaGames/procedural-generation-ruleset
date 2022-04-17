@@ -16,4 +16,3 @@ cell_size = Vector2( 64, 32 )
 format = 1
 
 [node name="Gui" parent="." instance=ExtResource( 3 )]
-
