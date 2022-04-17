@@ -18,7 +18,7 @@ collections:
   play:
     collections_dir: assets/play
     output: true
-    permalink: /play/:name
+    permalink: /:name
 
 # ------------ CONFIGURABLE END ------------
 
