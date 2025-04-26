@@ -2,9 +2,9 @@
 title: Procedural Generation Ruleset
 ---
 
-> **NEW!** Try it [in the browser]({{ site.url }}/play/)! Works well :)
+> **NEW!** Try it [in the browser]({{ site.url }}/play/)!
 
-The goal of PGR is to make an easy to write format for multi-dimensional and multi-pass procedural terrain generation. The format is easy to write and modify and flexible to use in use cases other than terrain generation. The background image was generated with the following config:
+The goal of PGR is to make an easy to write format for multi-pass-ish procedural terrain generation. The format is flexible enough that it could be used for other generation as well. The background image was generated with the following config:
 
 ```yaml
 steps:
